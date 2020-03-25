@@ -26,10 +26,8 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--后续实现时再打开此配置-->
-        <!--
         <property name="mapperLocations" value="classpath:com/itheima/health/mapper/*.xml"/>
         <property name="typeAliasesPackage" value="com.itheima.health.pojo"/>
-        -->
         <!-- 分页插件pagehelper -->
         <property name="plugins">
             <list>

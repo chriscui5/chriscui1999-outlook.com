@@ -7,6 +7,7 @@ import com.itheima.health.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.itheima.health.common.MessageConst;
 
 /**
  * @author:yixiaolan

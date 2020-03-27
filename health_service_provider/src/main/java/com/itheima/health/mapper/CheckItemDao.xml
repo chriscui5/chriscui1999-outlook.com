@@ -5,27 +5,36 @@
         INSERT INTO t_checkitem(code, name, sex, age, price, type, attention, remark) VALUES
         (#{code},#{name},#{sex},#{age},#{price},#{type},#{attention},#{remark})
     </insert>
+
     <update id="edit" parameterType="CheckItem">
         UPDATE t_checkitem
         set name = #{name},sex = #{sex},code = #{code},age = #{age},price = #{price},type = #{type},attention = #{attention},remark = #{remark}
         where id = #{id}
     </update>
+
     <!--删除-->
     <delete id="deleteCheckItemById" parameterType="integer">
         DELETE FROM t_checkitem WHERE id = #{id}
     </delete>
+
     <select id="selectByCondition" resultType="com.itheima.health.pojo.CheckItem" parameterType="string">
         SELECT * FROM t_checkitem
         <if test="queryString != null and queryString.length > 0">
             WHERE code LIKE CONCAT('%',#{queryString},'%') or name like CONCAT('%',#{queryString},'%')
         </if>
     </select>
+
     <select id="countCheckItemsById" resultType="java.lang.Long" parameterType="integer">
         SELECT count(*) FROM t_checkgroup_checkitem
         WHERE checkitem_id = #{checkItemId}
     </select>
+
     <!--基于ID获取数据-->
     <select id="findById" resultType="com.itheima.health.pojo.CheckItem">
         SELECT * FROM t_checkitem WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultType="com.itheima.health.pojo.CheckItem">
+        SELECT * FROM  t_checkitem
     </select>
 </mapper>

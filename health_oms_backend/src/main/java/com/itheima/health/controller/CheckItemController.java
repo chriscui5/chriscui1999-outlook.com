@@ -8,10 +8,8 @@ import com.itheima.health.entity.Result;
 import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.service.CheckItemService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 /**
  * @author:yixiaolan
@@ -141,4 +139,17 @@ public class CheckItemController {
             return new Result(false,MessageConst.EDIT_CHECKITEM_FAIL);
         }
     }
+
+    @RequestMapping("/findAll.do")
+    @ResponseBody
+    public Result findAll(){
+        try{
+            List<CheckItem> checkItemList = checkItemService.findAll();
+            return new Result(true,MessageConst.QUERY_CHECKITEM_SUCCESS,checkItemList);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new Result(false, MessageConst.QUERY_CHECKITEM_FAIL);
+        }
+    }
+
 }

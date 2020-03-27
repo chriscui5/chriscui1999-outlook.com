@@ -3,9 +3,9 @@ package com.itheima.health.dao;
 import com.github.pagehelper.Page;
 import com.itheima.health.pojo.CheckItem;
 import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 public interface CheckItemDao {
-
     void add(CheckItem checkItem);
     /**
      * 基于分页插件进行分页查询
@@ -30,10 +30,15 @@ public interface CheckItemDao {
      * @param id ID
      * @return 对象
      */
-    public CheckItem findById(Integer id);
+    CheckItem findById(Integer id);
     /**
      * 更新检查项
      * @param checkItem
      */
-    public void edit(CheckItem checkItem);
+    void edit(CheckItem checkItem);
+    /**
+     * 获取所有检查项列表
+     * @return
+     */
+    List<CheckItem> findAll();
 }

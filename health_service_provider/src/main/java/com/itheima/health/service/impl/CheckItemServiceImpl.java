@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author GreenBean
  * @Date Class created on 2020/3/25
@@ -22,8 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Slf4j
 public class CheckItemServiceImpl implements CheckItemService {
+
     @Autowired
     private CheckItemDao checkItemDao;
+
     @Override
     public void add(CheckItem item) {
         log.debug("CheckItemServiceImpl checkItem:{}",item);
@@ -36,7 +40,6 @@ public class CheckItemServiceImpl implements CheckItemService {
         Page<CheckItem> page = checkItemDao.selectByCondition(queryPageBean.getQueryString());
         return new PageResult(page.getTotal(),page.getResult());
     }
-
 
     @Transactional
     @Override
@@ -60,6 +63,11 @@ public class CheckItemServiceImpl implements CheckItemService {
         checkItemDao.edit(checkItem);
     }
 
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
+
     /**
      * 获取某一数据
      * @param id 数据ID
@@ -68,6 +76,4 @@ public class CheckItemServiceImpl implements CheckItemService {
     public CheckItem findById(Integer id) {
         return checkItemDao.findById(id);
     }
-
-
 }

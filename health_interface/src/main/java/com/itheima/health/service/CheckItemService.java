@@ -4,6 +4,8 @@ import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
 import com.itheima.health.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * 检查项服务接口
  */
@@ -30,4 +32,9 @@ public interface CheckItemService {
      * @param checkItem
      */
     public void edit(CheckItem checkItem);
+    /**
+     * 获取检查项列表
+     * @return
+     */
+    List<CheckItem> findAll();
 }

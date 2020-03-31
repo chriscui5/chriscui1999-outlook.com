@@ -48,4 +48,9 @@ public interface CheckGroupDao {
      * @param id
      */
     void deleteCheckItemsListByCheckGroupId(@Param("id")Integer id);
+    /**
+     * 获取所有检查组数据
+     * @return
+     */
+    List<CheckGroup> findAll();
 }
